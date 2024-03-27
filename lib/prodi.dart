@@ -8,6 +8,7 @@ class Prodi {
   String leader;
   List<String> lectures;
   String website;
+  String email;
   List<String> achievements;
 
   Prodi(
@@ -20,6 +21,7 @@ class Prodi {
       this.leader,
       this.lectures,
       this.website,
+      this.email,
       this.achievements);
 
   static List<Prodi> data = [
@@ -45,6 +47,7 @@ class Prodi {
           'Dr.Ir.Sukendah, M.Sc'
         ],
         'https://agrotek.upnjatim.ac.id/',
+        'agrotek@upnjatim.ac.id',
         ['', '', '']),
     Prodi(
         'assets/agribisnis.jpg',
@@ -60,6 +63,7 @@ class Prodi {
           'Dr. Ir. Mubarokah, M.T.'
         ],
         'https://agribis.upnjatim.ac.id/',
+        'agribisnis@upnjatim.ac.id',
         ['', '', '']),
     Prodi(
         'assets/agroteknologi.jpg',
@@ -83,6 +87,7 @@ class Prodi {
           'Dr.Ir.Sukendah, M.Sc'
         ],
         'https://agrotek.upnjatim.ac.id/',
+        'agrotek@upnjatim.ac.id',
         ['', '', '']),
     Prodi(
         'assets/agribisnis.jpg',
@@ -98,6 +103,7 @@ class Prodi {
           'Dr. Ir. Mubarokah, M.T.'
         ],
         'https://agribis.upnjatim.ac.id/',
+        'agribisnis@upnjatim.ac.id',
         ['', '', '']),
     Prodi(
         'assets/agribisnis.jpg',
@@ -113,6 +119,7 @@ class Prodi {
           'Dr. Ir. Mubarokah, M.T.'
         ],
         'https://agribis.upnjatim.ac.id/',
+        'agribisnis@upnjatim.ac.id',
         ['', '', ''])
   ];
 }
