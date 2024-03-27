@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart'; // Import the url_launcher package
 import 'prodi.dart';
 
 class ProdiDetail extends StatefulWidget {
@@ -86,7 +87,7 @@ class _ProdiDetailState extends State<ProdiDetail> {
                   itemCount: widget.prodi.missions.length,
                   itemBuilder: (BuildContext context, int index) {
                     final mission = widget.prodi.missions[index];
-                    return Text('${index + 1}. ${mission.name}');
+                    return Text('${index + 1}. ${mission}');
                   },
                 ),
                 SizedBox(height: 8),
@@ -137,7 +138,7 @@ class _ProdiDetailState extends State<ProdiDetail> {
                   itemCount: widget.prodi.lectures.length,
                   itemBuilder: (BuildContext context, int index) {
                     final lecture = widget.prodi.lectures[index];
-                    return Text('${index + 1}. ${lecture.name}');
+                    return Text('${index + 1}. ${lecture}');
                   },
                 ),
                 SizedBox(height: 8),
@@ -150,10 +151,20 @@ class _ProdiDetailState extends State<ProdiDetail> {
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    widget.prodi.website,
-                    style: TextStyle(
-                      fontSize: 15,
+                  child: GestureDetector(
+                    onTap: () {
+                      launchURL(widget
+                          .prodi.website); // Function to open URL in new tab
+                    },
+                    child: Text(
+                      widget.prodi.website,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors
+                            .blue, // Change text color to indicate it's clickable
+                        decoration: TextDecoration
+                            .underline, // Add underline for better indication
+                      ),
                     ),
                   ),
                 ),
@@ -171,7 +182,7 @@ class _ProdiDetailState extends State<ProdiDetail> {
                   itemCount: widget.prodi.achievements.length,
                   itemBuilder: (BuildContext context, int index) {
                     final achievement = widget.prodi.achievements[index];
-                    return Text('${index + 1}. ${achievement.name}');
+                    return Text('${index + 1}. ${achievement}');
                   },
                 ),
               ],
@@ -180,5 +191,14 @@ class _ProdiDetailState extends State<ProdiDetail> {
         ),
       ),
     );
+  }
+
+  // Function to open URL in a new tab
+  launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceSafariVC: false, forceWebView: false);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
